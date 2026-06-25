@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurio Web | Distros Recomendadas</title>
+    <!-- Favicon de Pestaña Personalizado con el Dino de tus stickers -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f19' stroke='%2300ff87' stroke-width='4'/><path d='M75 35 C78 28 85 28 85 35 C85 42 78 45 75 48 C75 55 78 62 72 68' fill='none' stroke='%23e11d48' stroke-width='8' stroke-linecap='round'/><path d='M25 45 C20 40 15 50 15 60 C15 75 30 85 55 85 C75 85 82 72 82 55 C82 35 65 25 45 25 C30 25 25 35 25 45 Z' fill='%2322c55e'/><path d='M45 25 C52 18 58 18 60 25 M60 35 C68 28 74 30 72 38' fill='none' stroke='%23ea580c' stroke-width='7' stroke-linecap='round'/><circle cx='38' cy='45' r='5' fill='%23000000'/><circle cx='36' cy='43' r='1.5' fill='%23ffffff'/><ellipse cx='28' cy='55' rx='6' ry='3' fill='%23166534' opacity='0.4'/><path d='M24 62 Q32 68 40 60' fill='none' stroke='%2314532d' stroke-width='4' stroke-linecap='round'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Interno para la Imagen de Fondo -->
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, rgba(3, 7, 18, 0.88), rgba(3, 7, 18, 0.94)), url('wal.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .space-y-6 > div {
+            backdrop-filter: blur(8px) !important;
+            background-color: rgba(17, 24, 39, 0.65) !important;
+        }
+    </style>
+</head>
+<body class="text-gray-100 font-sans">
+
+    <nav class="bg-gray-900 border-b border-green-500/30 p-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black text-green-400 flex items-center gap-2 tracking-wider uppercase font-mono">
+                <i class="fas fa-dragon text-2xl"></i> saurio-web<span class="text-white">_</span>
+            </a>
+            <div class="flex space-x-6 font-mono text-sm">
+                <a href="index.html" class="hover:text-green-400 transition">/inicio</a>
+                <a href="minecraft.html" class="hover:text-green-400 transition">/mods-minecraft</a>
+                <a href="distros.html" class="text-green-400 border-b-2 border-green-400 pb-1">/linux-distros</a>
+                <a href="asistente.html" class="hover:text-green-400 transition">/asistente-ia</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto my-10 px-4">
+        <div class="border-b border-gray-800 pb-4 mb-8">
+            <h2 class="text-3xl font-extrabold text-white font-mono"><i class="fab fa-linux text-green-400 mr-2"></i> Linux Ultra-Light</h2>
+            <p class="text-sm text-gray-400 mt-1">Las mejores opciones para exprimir laptops de recursos limitados.</p>
+        </div>
+
+        <div class="space-y-6 max-w-4xl">
+            <div class="rounded-2xl border border-green-500/20 shadow-xl p-6">
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+                    <div>
+                        <span class="bg-green-950 text-green-400 font-mono text-xs px-2.5 py-1 rounded border border-green-500/20 uppercase font-bold">Mi Favorita</span>
+                        <h3 class="text-2xl font-bold text-white font-mono mt-2">Void Linux</h3>
+                    </div>
+                    <a href="https://voidlinux.org/download/" target="_blank" class="bg-gray-800 border border-gray-700 hover:border-green-500 text-green-400 font-mono text-xs px-4 py-2 rounded-lg transition">
+                        Sitio Oficial <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    Una distribución independiente increíble que destaca por usar <code class="bg-gray-950 text-green-400 px-1.5 py-0.5 rounded font-mono text-xs">runit</code> como sistema de inicio (init system) en lugar de systemd. Esto acelera brutalmente el arranque y mantiene el consumo de RAM al mínimo absoluto. Ideal para combinar con gestores ligeros como <span class="text-white">Wayfire</span> o <span class="text-white">DWM</span>.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-gray-950 p-3 rounded-xl font-mono text-xs border border-gray-800">
+                    <div><span class="text-gray-500">RAM Base:</span> <span class="text-white">~60MB</span></div>
+                    <div><span class="text-gray-500">Init:</span> <span class="text-green-400">runit</span></div>
+                    <div><span class="text-gray-500">Paquetes:</span> <span class="text-white">XBPS</span></div>
+                </div>
+            </div>
+
+            <div class="rounded-2xl border border-gray-800 shadow-xl p-6">
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+                    <div>
+                        <span class="bg-gray-950 text-purple-400 font-mono text-xs px-2.5 py-1 rounded border border-purple-500/20 uppercase font-bold">Minimalismo</span>
+                        <h3 class="text-2xl font-bold text-white font-mono mt-2">Alpine Linux</h3>
+                    </div>
+                    <a href="https://alpinelinux.org/" target="_blank" class="bg-gray-800 border border-gray-700 hover:border-purple-500 text-purple-400 font-mono text-xs px-4 py-2 rounded-lg transition">
+                        Sitio Oficial <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    Diseñada pensando en la seguridad, simplicidad y eficiencia de espacio. Basada en <code class="bg-gray-950 text-purple-400 px-1.5 py-0.5 rounded font-mono text-xs">musl libc</code> y <code class="bg-gray-950 text-purple-400 px-1.5 py-0.5 rounded font-mono text-xs">busybox</code>. Es un sistema tan sumamente compacto que puede correr entero dentro de la memoria caché.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-gray-950 p-3 rounded-xl font-mono text-xs border border-gray-800">
+                    <div><span class="text-gray-500">RAM Base:</span> <span class="text-white">~30MB</span></div>
+                    <div><span class="text-gray-500">Libc:</span> <span class="text-white">musl</span></div>
+                    <div><span class="text-gray-500">Gestor:</span> <span class="text-white">APK</span></div>
+                </div>
+            </div>          
+        </div>
+    </main>
+
+</body>
+</html>

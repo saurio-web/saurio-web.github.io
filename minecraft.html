@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurio Web | Minecraft Modpacks</title>
+    <!-- Favicon de Pestaña Personalizado con el Dino de tus stickers -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f19' stroke='%2300ff87' stroke-width='4'/><path d='M75 35 C78 28 85 28 85 35 C85 42 78 45 75 48 C75 55 78 62 72 68' fill='none' stroke='%23e11d48' stroke-width='8' stroke-linecap='round'/><path d='M25 45 C20 40 15 50 15 60 C15 75 30 85 55 85 C75 85 82 72 82 55 C82 35 65 25 45 25 C30 25 25 35 25 45 Z' fill='%2322c55e'/><path d='M45 25 C52 18 58 18 60 25 M60 35 C68 28 74 30 72 38' fill='none' stroke='%23ea580c' stroke-width='7' stroke-linecap='round'/><circle cx='38' cy='45' r='5' fill='%23000000'/><circle cx='36' cy='43' r='1.5' fill='%23ffffff'/><ellipse cx='28' cy='55' rx='6' ry='3' fill='%23166534' opacity='0.4'/><path d='M24 62 Q32 68 40 60' fill='none' stroke='%2314532d' stroke-width='4' stroke-linecap='round'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Interno para la Imagen de Fondo -->
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, rgba(3, 7, 18, 0.88), rgba(3, 7, 18, 0.94)), url('fondo-inicio.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .grid > div {
+            backdrop-filter: blur(8px) !important;
+            background-color: rgba(17, 24, 39, 0.65) !important;
+        }
+    </style>
+</head>
+<body class="text-gray-100 font-sans">
+
+    <nav class="bg-gray-900 border-b border-green-500/30 p-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black text-green-400 flex items-center gap-2 tracking-wider uppercase font-mono">
+                <i class="fas fa-dragon text-2xl"></i> saurio-web<span class="text-white">_</span>
+            </a>
+            <div class="flex space-x-6 font-mono text-sm">
+                <a href="index.html" class="hover:text-green-400 transition">/inicio</a>
+                <a href="minecraft.html" class="text-green-400 border-b-2 border-green-400 pb-1">/mods-minecraft</a>
+                <a href="distros.html" class="hover:text-green-400 transition">/linux-distros</a>
+                <a href="asistente.html" class="hover:text-green-400 transition">/asistente-ia</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto my-10 px-4">
+        <div class="border-b border-gray-800 pb-4 mb-8">
+            <h2 class="text-3xl font-extrabold text-white font-mono"><i class="fas fa-cubes text-green-400 mr-2"></i> Modpacks Optimizados</h2>
+            <p class="text-sm text-gray-400 mt-1">Descargas directas preparadas por mí para el máximo rendimiento de FPS.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="rounded-2xl border border-gray-800 overflow-hidden shadow-lg hover:border-gray-700 transition">
+                <div class="h-44 bg-gradient-to-br from-green-800 to-gray-900 relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-gray-950/80 text-green-400 text-xs px-2 py-1 rounded font-mono border border-green-500/20">Fabric 1.20.1</span>
+                    <i class="fas fa-box-open text-5xl text-green-400/40"></i>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-bold text-white font-mono mb-2">SaurioFPS Pack v1.0</h3>
+                    <p class="text-sm text-gray-400 mb-4">Modpack base enfocado puramente en rendimiento, Sodium, optimizadores de memoria y shaders ultra-ligeros.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xs text-gray-500 font-mono"><i class="fas fa-hdd"></i> 45 MB</span>
+                        <a href="TU_ENLACE_DE_MEDIAFIRE_O_DRIVE" target="_blank" class="bg-green-600 hover:bg-green-500 text-black font-bold px-4 py-2 rounded-lg text-xs font-mono uppercase transition flex items-center gap-1">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-2xl border border-gray-800 overflow-hidden shadow-lg hover:border-gray-700 transition">
+                <div class="h-44 bg-gradient-to-br from-purple-900 to-gray-900 relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-gray-950/80 text-purple-400 text-xs px-2 py-1 rounded font-mono border border-purple-500/20">Forge 1.16.5</span>
+                    <i class="fas fa-shield-alt text-5xl text-purple-400/40"></i>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-bold text-white font-mono mb-2">Saurio Survival Avanzado</h3>
+                    <p class="text-sm text-gray-400 mb-4">Pack técnico con automatizaciones ligeras y optimización de ticks de servidor para evitar tirones.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xs text-gray-500 font-mono"><i class="fas fa-hdd"></i> 120 MB</span>
+                        <a href="#" class="bg-green-600 hover:bg-green-500 text-black font-bold px-4 py-2 rounded-lg text-xs font-mono uppercase transition flex items-center gap-1">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-950 border-t border-gray-900 py-8 text-center text-gray-600 text-xs font-mono mt-20">
+        <p>© 2026 saurio-web | Modpacks creados con 🦖</p>
+    </footer>
+
+</body>
+</html>
