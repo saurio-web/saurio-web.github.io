@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurio Web | Dotfiles Repository</title>
+    <!-- Favicon Personalizado -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23060814' stroke='%2310b981' stroke-width='4'/><path d='M25 45 C20 40 15 50 15 60 C15 75 30 85 55 85 C75 85 82 72 82 55 C82 35 65 25 45 25 C30 25 25 35 25 45 Z' fill='%2310b981'/><circle cx='38' cy='45' r='5' fill='%23000000'/></svg>">
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-dark: #050814;
+            --card-bg: rgba(10, 16, 32, 0.6);
+            --accent-green: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #0d1527 0%, #050814 100%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+        }
+
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Glassmorphic Cyberpunk Card Styles */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px) saturate(190%);
+            -webkit-backdrop-filter: blur(14px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px -10px rgba(16, 185, 129, 0.15), 0 0 20px -5px rgba(6, 182, 212, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #050814; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* Glowing Effects */
+        .glow-text-green {
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+        }
+        .glow-border-cyan {
+            box-shadow: 0 0 15px -3px rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-black min-h-screen flex flex-col justify-between">
+
+    <!-- NAVBAR UNIFICADO CON NAVEGACIÓN COMPLETA -->
+    <nav class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl px-4 py-3.5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-lg font-extrabold text-emerald-400 flex items-center gap-2 tracking-tight uppercase font-mono">
+                <i class="fas fa-dragon text-xl text-emerald-400"></i> saurio-web<span class="animate-pulse text-cyan-400">_</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-1 font-mono text-xs">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition">/inicio</a>
+                <a href="dotfiles.html" class="px-3 py-1.5 rounded-lg text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 font-bold">/dotfiles</a>
+                <a href="minecraft.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition">/mods-minecraft</a>
+                <a href="distros.html" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition">/linux-distros</a>
+                <a href="asistente.html" class="ml-2 px-3 py-1.5 bg-emerald-500 text-slate-950 font-bold rounded-lg hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20">/asistente-ia</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileNav()" class="md:hidden text-slate-400 hover:text-white text-xl p-1 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-nav" class="hidden md:hidden mt-3 pt-3 border-t border-slate-800/80 space-y-1 font-mono text-xs">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-slate-400">/inicio</a>
+            <a href="dotfiles.html" class="block px-3 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">/dotfiles</a>
+            <a href="minecraft.html" class="block px-3 py-2 rounded-lg text-slate-400">/mods-minecraft</a>
+            <a href="distros.html" class="block px-3 py-2 rounded-lg text-slate-400">/linux-distros</a>
+            <a href="asistente.html" class="block px-3 py-2 rounded-lg text-emerald-400 font-bold bg-slate-900">/asistente-ia</a>
+        </div>
+    </nav>
+
+    <!-- HEADER DE LA SECCIÓN DE DOTFILES -->
+    <header class="max-w-7xl mx-auto w-full mt-6 mb-8 px-4">
+        <div class="p-6 md:p-8 rounded-2xl border border-slate-800/80 bg-gradient-to-r from-slate-900/60 via-slate-950/80 to-purple-950/20 relative overflow-hidden glass-card">
+            <div class="absolute -right-8 -bottom-8 text-9xl font-mono opacity-[0.03] text-emerald-400 select-none pointer-events-none hidden md:block">
+                <i class="fas fa-terminal"></i>
+            </div>
+            <div class="max-w-3xl relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Repository Hub v3.0
+                </div>
+                <h1 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight font-sans">
+                    Hub de <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 glow-text-green">Dotfiles & Window Managers</span>
+                </h1>
+                <p class="text-slate-400 text-xs md:text-sm mt-2 leading-relaxed">
+                    Catálogo de configuraciones, entornos gráficos minimalistas, atajos y scripts para Hyprland, Sway, BSPWM, DWM y más distros Linux.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 w-full flex-grow mb-12 space-y-6">
+
+        <!-- PANEL DE BUSQUEDA Y FILTROS -->
+        <section class="glass-card p-4 md:p-5 rounded-2xl flex flex-col md:flex-row gap-3 md:items-center justify-between">
+            <!-- Input de búsqueda -->
+            <div class="relative flex-1">
+                <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                <input type="text" id="search-input" onkeyup="filterDotfiles()" placeholder="Buscar por autor, repositorio, WM (ej. Hyprland, Sway, DWM)..." 
+                       class="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 transition">
+            </div>
+
+            <!-- Selectores de Filtro -->
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <!-- Filtro por WM/Compositor -->
+                <select id="wm-filter" onchange="filterDotfiles()" class="bg-slate-950/80 border border-slate-800 text-slate-300 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500/50 cursor-pointer">
+                    <option value="ALL">Todos los Window Managers</option>
+                    <option value="Hyprland">Hyprland</option>
+                    <option value="bspwm">BSPWM</option>
+                    <option value="Sway">Sway / SwayFX</option>
+                    <option value="Niri">Niri Scroll</option>
+                    <option value="i3wm">i3wm</option>
+                    <option value="dwm">DWM</option>
+                </select>
+
+                <!-- Filtro por Distro -->
+                <select id="distro-filter" onchange="filterDotfiles()" class="bg-slate-950/80 border border-slate-800 text-slate-300 rounded-xl px-3 py-2.5 focus:outline-none focus:border-emerald-500/50 cursor-pointer">
+                    <option value="ALL">Todas las Distros</option>
+                    <option value="Arch">Arch Linux</option>
+                    <option value="Void">Void Linux</option>
+                    <option value="Fedora">Fedora</option>
+                    <option value="Debian">Debian / Ubuntu</option>
+                    <option value="NixOS">NixOS</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- CONTADOR Y ESTADO -->
+        <div class="flex justify-between items-center px-1 font-mono text-xs text-slate-400">
+            <div>
+                Mostrando <span id="results-count" class="text-emerald-400 font-bold">0</span> configuraciones
+            </div>
+            <div id="active-filter-badge" class="hidden text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20">
+                Filtro Activo
+            </div>
+        </div>
+
+        <!-- GRID PRINCIPAL DE DOTFILES -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="dotfiles-container">
+            <!-- Generado dinámicamente vía JS -->
+        </section>
+
+        <!-- MENSAJE DE RESULTADOS VACÍOS -->
+        <div id="no-results" class="hidden text-center py-16 glass-card rounded-2xl">
+            <i class="fas fa-terminal text-4xl text-slate-600 mb-3"></i>
+            <p class="text-slate-400 font-mono text-sm">No se encontraron dotfiles que coincidan con la búsqueda.</p>
+        </div>
+
+    </main>
+
+    <!-- MODAL DE PREVISUALIZACIÓN -->
+    <div id="dotfiles-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col">
+            <!-- Modal Header -->
+            <div class="px-4 py-3 md:px-6 md:py-4 bg-slate-950/80 border-b border-slate-800/80 flex justify-between items-center shrink-0">
+                <h3 id="modal-title" class="font-mono font-bold text-emerald-400 text-xs md:text-sm truncate max-w-[85%]">/dotfiles-info</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition text-base p-1 focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-4 md:p-6 space-y-4 overflow-y-auto custom-scrollbar">
+                <div class="w-full h-44 md:h-60 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 relative shrink-0">
+                    <img id="modal-img" src="" alt="Previsualización" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Sistemas & WM/Compositor Compatibles</h4>
+                    <div id="modal-tags" class="flex flex-wrap gap-1.5 mt-1.5"></div>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Descripción Técnica</h4>
+                    <p id="modal-desc" class="text-slate-300 text-xs md:text-sm mt-1.5 leading-relaxed font-sans"></p>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-4 py-3 md:px-6 md:py-4 bg-slate-950/60 border-t border-slate-800/80 flex justify-between items-center shrink-0">
+                <span id="modal-author" class="text-[11px] font-mono text-slate-400"></span>
+                <a id="modal-github" href="#" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs font-mono transition flex items-center gap-1.5 shadow-md shadow-emerald-500/20">
+                    <i class="fab fa-github text-sm"></i> CLONAR REPOSITORIO
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950/80 border-t border-slate-900 py-6 text-center text-slate-500 text-[10px] md:text-xs font-mono">
+        <p>© 2026 saurio-web | Mantenido para la comunidad del software libre.</p>
+    </footer>
+
+    <!-- LÓGICA DE FILTRADO Y RENDERIZADO -->
+    <script>
+        const dotfilesData = [
+            { id: 1, title: "carlosg-gh / dotfiles", url: "https://github.com/carlosg-gh/dotfiles", author: "carlosg-gh", distros: ["Arch", "Ubuntu", "Debian"], wm: "WM Variados", img: "img/dotfiles/carlosg.png", desc: "Configuración limpia con scripts de automatización modulares listos para desplegar." },
+            { id: 2, title: "gh0stzk / dotfiles", url: "https://github.com/gh0stzk/dotfiles", author: "gh0stzk", distros: ["Arch"], wm: "bspwm", img: "img/dotfiles/gh0stzk.png", desc: "Una de las configuraciones estéticas de bspwm más famosas, con temas dinámicos integrados." },
+            { id: 3, title: "Zproger / bspwm-dotfiles", url: "https://github.com/Zproger/bspwm-dotfiles", author: "Zproger", distros: ["Arch", "Void"], wm: "bspwm", img: "img/dotfiles/zproger.png", desc: "Minimalismo oscuro enfocado en la velocidad extrema y atajos de teclado fluidos." },
+            { id: 4, title: "justTOBBI / dotfiles", url: "https://codeberg.org/justTOBBI/dotfiles", author: "justTOBBI", distros: ["Fedora", "Arch"], wm: "Gnome", img: "img/dotfiles/justtobbi.png", desc: "Alojado en Codeberg. Suite pulida enfocada en terminales planas y consistencia visual." },
+            { id: 5, title: "zoddDev / dotfiles", url: "https://github.com/zoddDev/dotfiles", author: "zoddDev", distros: ["Arch"], wm: "Hyprland", img: "img/dotfiles/zodd.png", desc: "Entorno moderno basado por completo en Wayland con efectos fluidos y decoraciones dinámicas." },
+            { id: 6, title: "Nytril-ark / rumda", url: "https://github.com/Nytril-ark/rumda", author: "Nytril-ark", distros: ["Arch"], wm: "Sway", img: "img/dotfiles/nytril.png", desc: "Efectos visuales e interfaz compuesta en Wayland pulida para el uso diario." },
+            { id: 7, title: "R7rainz / dotfiles", url: "https://github.com/R7rainz/dotfiles", author: "R7rainz", distros: ["Arch"], wm: "i3wm", img: "img/dotfiles/r7rainz.png", desc: "Estructura impecable de i3-gaps utilizando una paleta de colores mate ultra limpia." },
+            { id: 8, title: "RumiAxolotl / Axolotl-hyprland", url: "https://github.com/RumiAxolotl/Axolotl-hyprland", author: "RumiAxolotl", distros: ["Arch"], wm: "Hyprland", img: "img/dotfiles/rumi.png", desc: "Entorno temático elegante con animaciones fluidas y excelente control de barras de estado." },
+            { id: 9, title: "Kuru-Saka / dotfiles", url: "https://github.com/Kuru-Saka/dotfiles", author: "Kuru-Saka", distros: ["Void", "Arch"], wm: "dwm", img: "img/dotfiles/kuru.png", desc: "Optimizado para arrancar en milisegundos sin systemd, usando gestores dinámicos livianos." },
+            { id: 10, title: "KingerNL / .dotfiles", url: "https://github.com/KingerNL/.dotfiles", author: "KingerNL", distros: ["Debian", "Arch"], wm: "Qtile", img: "img/dotfiles/kinger.png", desc: "Configuraciones en Python puro para un control estricto del mosaico en pantallas compactas." },
+            { id: 11, title: "keyitdev / dotfiles", url: "https://github.com/keyitdev/dotfiles", author: "keyitdev", distros: ["Arch"], wm: "bspwm", img: "img/dotfiles/keyit.png", desc: "Acabados visuales elegantes con fuentes Nerd Fonts cargadas de serie para terminales." },
+            { id: 12, title: "harilvfs / i3wmdotfiles", url: "https://github.com/harilvfs/i3wmdotfiles", author: "harilvfs", distros: ["Debian", "Ubuntu"], wm: "i3wm", img: "img/dotfiles/haril.png", desc: "Maquetación sólida clásica diseñada para aprovechar al máximo las pantallas de portátiles antiguos." },
+            { id: 13, title: "xusiai / dotfiles", url: "https://github.com/xusiai/dotfiles", author: "xusiai", distros: ["Arch"], wm: "Hyprland", img: "img/dotfiles/xusiai.png", desc: "Flujo plano minimalista enfocado en eficiencia de renderizado sobre pantallas de alta tasa de refresco." },
+            { id: 14, title: "potamides / dotfiles", url: "https://github.com/potamides/dotfiles", author: "potamides", distros: ["NixOS", "Arch"], wm: "Sway", img: "img/dotfiles/potamides.svg", desc: "Configuración declarativa robusta ideal para replicación inmutable en servidores y desktops." },
+            { id: 15, title: "arungeorgesaji / dotfiles", url: "https://github.com/arungeorgesaji/dotfiles", author: "arungeorgesaji", distros: ["Arch"], wm: "bspwm", img: "img/dotfiles/arun.png", desc: "Entorno productivo para desarrollo en consola pura mediante flujos de trabajo ágiles." },
+            { id: 16, title: "seeingangelz / dotfiles", url: "https://github.com/seeingangelz/dotfiles", author: "seeingangelz", distros: ["Arch"], wm: "Hyprland", img: "img/dotfiles/seeing.png", desc: "Estética cyberpunk con blur avanzado y barras de herramientas dinámicas." },
+            { id: 17, title: "dwt1 / dwm", url: "https://gitlab.com/dwt1/dotfiles/-/tree/38ace0b568a30e053d64b139a48b73c4b707b2db/dwm", author: "DistroTube", distros: ["Arch"], wm: "dwm", img: "img/dotfiles/dwt1.png", desc: "Rama estable de DWM modificada con los mejores parches de organización de tags." },
+            { id: 18, title: "saatvik333 / niri-dotfiles", url: "https://github.com/saatvik333/niri-dotfiles", author: "saatvik333", distros: ["Arch"], wm: "Niri", img: "img/dotfiles/saatvik.png", desc: "Configuración inicial para el innovador compositor Niri con scroll horizontal dinámico." },
+            { id: 19, title: "nfoert / niri-dotfiles", url: "https://github.com/nfoert/niri-dotfiles", author: "nfoert", distros: ["Fedora", "NixOS"], wm: "Niri", img: "img/dotfiles/nfoert.png", desc: "Entorno robusto adaptado para el renderizado moderno de flujos mediante Wayland y Niri." },
+            { id: 20, title: "rickinshah / niri-dotfiles", url: "https://github.com/rickinshah/niri-dotfiles", author: "rickinshah", distros: ["Arch"], wm: "Niri", img: "img/dotfiles/rickin.mp4", desc: "Estructura experimental limpia para probar el diseño de mosaico por desplazamiento dinámico." },
+            { id: 21, title: "hidayry / swaywm-dotfiles", url: "https://github.com/hidayry/swaywm-dotfiles", author: "hidayry", distros: ["Arch", "Void"], wm: "Sway", img: "img/dotfiles/hidayry.png", desc: "Reemplazo de i3wm en Wayland, pulido para el consumo mínimo de ciclos de reloj de CPU." },
+            { id: 22, title: "owpk / dotfiles-swayfx", url: "https://github.com/owpk/dotfiles-swayfx", author: "owpk", distros: ["Arch"], wm: "Sway", img: "img/dotfiles/owpk.jpg", desc: "Sway potenciado con esquinas redondeadas y sombras dinámicas sin pérdida de rendimiento." },
+            { id: 23, title: "vaelixd / SwayFX-Dotfiles", url: "https://github.com/vaelixd/SwayFX-Dotfiles", author: "vaelixd", distros: ["Arch", "Fedora"], wm: "Sway", img: "img/dotfiles/vaelixd.png", desc: "Efectos visuales refinados basados en los sombreadores estables de SwayFX." },
+            { id: 24, title: "lordpaijo / swayfx-dotfiles", url: "https://github.com/lordpaijo/swayfx-dotfiles", author: "lordpaijo", distros: ["Debian", "Ubuntu"], wm: "Sway", img: "img/dotfiles/lordpaijo.png", desc: "Combinación estética balanceada entre ligereza de escritorio y efectos visuales fluidos." },
+            { id: 25, title: "smravec / .dotfiles-swayfx", url: "https://github.com/smravec/.dotfiles-swayfx", author: "smravec", distros: ["NixOS", "Arch"], wm: "Sway", img: "img/dotfiles/smravec.png", desc: "Configuración declarativa modular optimizada con atajos ergonómicos." },
+            { id: 26, title: "JaKooLit / Arch-Hyprland", url: "https://github.com/JaKooLit/Arch-Hyprland", author: "JaKooLit", distros: ["Arch"], wm: "Hyprland", img: "img/dotfiles/jakoolit_arch.png", desc: "Instalador robusto y entorno repleto de widgets optimizado para setups de gaming." },
+            { id: 27, title: "JaKooLit / Fedora-Hyprland", url: "https://github.com/JaKooLit/Fedora-Hyprland", author: "JaKooLit", distros: ["Fedora"], wm: "Hyprland", img: "img/dotfiles/jakoolit_fedora.png", desc: "Variante oficial adaptada a paquetes RPM con excelente estabilidad general de paquetes." },
+            { id: 28, title: "JaKooLit / Debian-Hyprland", url: "https://github.com/JaKooLit/Debian-Hyprland", author: "JaKooLit", distros: ["Debian"], wm: "Hyprland", img: "img/dotfiles/jakoolit_debian.png", desc: "La legendaria estabilidad de Debian unida a las transiciones modernas aceleradas por GPU." },
+            { id: 29, title: "JaKooLit / NixOS-Hyprland", url: "https://github.com/JaKooLit/NixOS-Hyprland", author: "JaKooLit", distros: ["NixOS"], wm: "Hyprland", img: "img/dotfiles/jakoolit_nixos.png", desc: "Maquetación inmutable y reproducible para levantar Hyprland en un comando sin romper dependencias." }
+        ];
+
+        // Función de Renderizado
+        function renderDotfiles(items) {
+            const container = document.getElementById('dotfiles-container');
+            const noResults = document.getElementById('no-results');
+            const resultsCount = document.getElementById('results-count');
+
+            container.innerHTML = '';
+            resultsCount.innerText = items.length;
+
+            if (items.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-xl glass-card flex flex-col justify-between cursor-pointer group border border-slate-800/80";
+                card.setAttribute('onclick', `openModal(${item.id})`);
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
+                                ${item.wm}
+                            </span>
+                            <i class="fab ${item.url.includes('codeberg') ? 'fa-box' : item.url.includes('gitlab') ? 'fa-gitlab' : 'fa-github'} text-slate-500 group-hover:text-cyan-400 text-sm transition"></i>
+                        </div>
+                        <h3 class="text-xs md:text-sm font-bold text-slate-100 group-hover:text-emerald-400 transition truncate font-mono">${item.title}</h3>
+                        <p class="text-[11px] text-slate-400 line-clamp-2 mt-1 leading-relaxed font-sans">${item.desc}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mt-3 pt-2 border-t border-slate-800/60">
+                        ${item.distros.map(d => `<span class="text-[9px] font-mono bg-slate-950/80 text-slate-400 px-1.5 py-0.5 rounded border border-slate-800">${d}</span>`).join('')}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Función de Filtrado Combinado
+        function filterDotfiles() {
+            const searchValue = document.getElementById('search-input').value.toLowerCase();
+            const selectedWM = document.getElementById('wm-filter').value;
+            const selectedDistro = document.getElementById('distro-filter').value;
+            const badge = document.getElementById('active-filter-badge');
+
+            if (selectedWM !== 'ALL' || selectedDistro !== 'ALL' || searchValue !== '') {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const filtered = dotfilesData.filter(item => {
+                const matchesSearch = item.title.toLowerCase().includes(searchValue) || 
+                                      item.author.toLowerCase().includes(searchValue) || 
+                                      item.desc.toLowerCase().includes(searchValue) ||
+                                      item.wm.toLowerCase().includes(searchValue);
+                
+                const matchesWM = selectedWM === 'ALL' || item.wm.toLowerCase().includes(selectedWM.toLowerCase());
+                const matchesDistro = selectedDistro === 'ALL' || item.distros.some(d => d.toLowerCase().includes(selectedDistro.toLowerCase()));
+
+                return matchesSearch && matchesWM && matchesDistro;
+            });
+
+            renderDotfiles(filtered);
+        }
+
+        // Modal Functions
+        function openModal(id) {
+            const item = dotfilesData.find(x => x.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-title').innerText = `/${item.title}`;
+            document.getElementById('modal-img').src = item.img;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-author').innerText = `Creado por: ${item.author}`;
+            document.getElementById('modal-github').href = item.url;
+
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            
+            [...item.distros, item.wm].forEach(tag => {
+                const span = document.createElement('span');
+                span.className = "text-[10px] font-mono bg-slate-950 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded";
+                span.innerText = tag;
+                tagsContainer.appendChild(span);
+            });
+
+            const modal = document.getElementById('dotfiles-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.firstElementChild.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('dotfiles-modal');
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('dotfiles-modal');
+            if (event.target === modal) closeModal();
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Inicializar Renderizado Completo
+        renderDotfiles(dotfilesData);
+    </script>
+</body>
+</html>
